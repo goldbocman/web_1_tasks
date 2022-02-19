@@ -1,5 +1,4 @@
-from flask import Flask, url_for, render_template
-
+from flask import Flask, url_for, render_template, request
 
 app = Flask(__name__)
 
@@ -33,6 +32,15 @@ def promotion_image():
     img = url_for('static', filename='img/mars.jpg')
     styles = url_for('static', filename='css/style.css')
     return render_template('index.html', img=img, style=styles)
+
+
+@app.route('/form_sample', methods=['POST', 'GET'])
+def form_sample():
+    if request.method == 'GET':
+        styles = url_for('static', filename='css/style.css')
+        return render_template('form.html', style=styles)
+    elif request.method == 'POST':
+        return "Форма отправлена"
 
 
 if __name__ == '__main__':
