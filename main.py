@@ -1,3 +1,5 @@
+import random
+
 from flask import Flask, url_for, render_template, request
 
 app = Flask(__name__)
@@ -53,6 +55,11 @@ def choice(planet_name):
     else:
         return render_template('another_planet.html', planet=planet_name, style=styles)
 
+
+@app.route('/results/<nickname>/<int:level>/<float:rating>')
+def results(nickname, level, rating):
+    styles = url_for('static', filename='css/style.css')
+    return render_template('results.html', nickname=nickname, level=level, rating=rating, style=styles)
 
 
 if __name__ == '__main__':
