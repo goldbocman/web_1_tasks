@@ -75,5 +75,41 @@ def load_photo():
         return "Форма отправлена"
 
 
+@app.route('/carousel')
+def carousel():
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <title>Слайды</title>
+</head>
+<body>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="{url_for('static', filename='img/mars4.jpg')}" class="d-block w-100" alt="марс">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{url_for('static', filename='img/mars5.jpg')}" class="d-block w-100" alt="марс">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{url_for('static', filename='img/mars3.jpg')}" class="d-block w-100" alt="марс">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{url_for('static', filename='img/mars2.jpg')}" class="d-block w-100" alt="марс">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{url_for('static', filename='img/mars.jpg')}" class="d-block w-100" alt="марс">
+    </div>
+  </div>
+</div>
+</body>
+</html>'''
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
