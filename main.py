@@ -43,5 +43,17 @@ def form_sample():
         return "Форма отправлена"
 
 
+@app.route('/choice/<planet_name>')
+def choice(planet_name):
+    styles = url_for('static', filename='css/style.css')
+    if planet_name.lower() == 'земля':
+        return render_template('zemlya.html', planet=planet_name, style=styles)
+    elif planet_name.lower() == 'марс':
+        return render_template('mars.html', planet=planet_name, style=styles)
+    else:
+        return render_template('another_planet.html', planet=planet_name, style=styles)
+
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
