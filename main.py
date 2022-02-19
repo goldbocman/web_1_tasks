@@ -62,5 +62,18 @@ def results(nickname, level, rating):
     return render_template('results.html', nickname=nickname, level=level, rating=rating, style=styles)
 
 
+@app.route('/load_photo', methods=['POST', 'GET'])
+def load_photo():
+    styles = url_for('static', filename='css/style.css')
+    if request.method == 'GET':
+        img = url_for('static', filename='img/loaded_photo.png')
+        return render_template('image_form.html', img=img, style=styles)
+    elif request.method == 'POST':
+        f = request.files['file']
+        with open('static//img//loaded_photo.png', 'wb') as photo:
+            photo.write(f.read())
+        return "Форма отправлена"
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
